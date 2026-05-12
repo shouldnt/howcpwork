@@ -1,16 +1,80 @@
-# React + Vite
+# How Computers Work — Slide Presentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive, animated slide deck explaining how computers work — from transistors to operating systems.
 
-Currently, two official plugins are available:
+Built with **React + Vite + Framer Motion**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Quick Start
 
-## React Compiler
+```bash
+cd how-computers-work-slides
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Open `http://localhost:5173` in your browser. Use arrow keys or click to navigate.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Layer | What |
+|-------|------|
+| **React** | UI framework — each slide is a component |
+| **Vite** | Build tool — fast dev server & production builds |
+| **Framer Motion** | Slide transitions, entrance animations, looping effects |
+
+## What It Covers
+
+The deck traces the full journey from the physical layer up to software:
+
+1. **Binary** — bits, bytes, how data is represented
+2. **Transistors** — the toggle switches that make it all possible
+3. **Logic Gates** — AND, OR, NOT — building circuits from switches
+4. **CPU** — Fetch-Decode-Execute cycle & the ALU
+5. **Registers** — ultra-fast on-chip memory (PC, IR, GP, SP, Flags)
+6. **MMIO** — how the CPU talks to hardware peripherals
+7. **Hardware Communication** — buses, interrupts, protocols (I²C, SPI, PCIe, USB)
+8. **Memory Hierarchy** — registers → cache → RAM → storage
+9. **Operating System** — process/memory/file management layers
+
+## Project Structure
+
+```
+src/
+├── App.jsx          ← Deck controller (navigation, progress bar)
+├── App.css          ← All slide styles (dark theme)
+├── main.jsx         ← Entry point
+└── slides/          ← One component per slide
+    ├── TitleSlide.jsx
+    ├── BigPicture.jsx
+    ├── BinarySlide.jsx
+    ├── Transistors.jsx
+    ├── LogicGates.jsx
+    ├── CPUSlide.jsx
+    ├── RegistersSlide.jsx
+    ├── MMIOSlide.jsx
+    ├── HardwareCommSlide.jsx
+    ├── MemorySlide.jsx
+    ├── OSSlide.jsx
+    └── SummarySlide.jsx
+```
+
+## Navigation
+
+| Key | Action |
+|-----|--------|
+| `→` / `Space` / `↓` | Next slide |
+| `←` / `↑` | Previous slide |
+| `Home` | First slide |
+| `End` | Last slide |
+| Click dots | Jump to slide |
+
+## Build for Production
+
+```bash
+npm run build    # outputs to dist/
+```
+
+---
+
+For a detailed explanation of how slides work internally, see [SLIDES.md](./SLIDES.md).  
+For development task tracking, see [TASKS.md](./TASKS.md).
