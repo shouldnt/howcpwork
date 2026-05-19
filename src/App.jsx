@@ -36,6 +36,7 @@ const slides = [
 function App() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [collapsed, setCollapsed] = useState(false);
 
   const goNext = useCallback(() => {
     if (current < slides.length - 1) {
@@ -81,10 +82,17 @@ function App() {
   return (
     <div className="deck">
       {/* Sidebar */}
-      <nav className="sidebar">
+      <nav className={`sidebar ${collapsed ? "collapsed" : ""}`}>
         <div className="sidebar-header">
           <span className="sidebar-icon">💻</span>
           <span className="sidebar-brand">How Computers Work</span>
+          <button
+            className="sidebar-toggle"
+            onClick={() => setCollapsed((c) => !c)}
+            title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+          >
+            {collapsed ? "▶" : "◀"}
+          </button>
         </div>
         <div className="sidebar-slides">
           {slides.map((slide, i) => (
@@ -92,7 +100,7 @@ function App() {
               key={slide.id}
               className={`sidebar-item ${i === current ? "active" : ""}`}
               onClick={() => goTo(i)}
-              title={slide.title}
+              data-title={slide.title}
             >
               <span className="sidebar-num">{i + 1}</span>
               <span className="sidebar-title">{slide.title}</span>
