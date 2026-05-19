@@ -37,60 +37,45 @@ export default function Transistors() {
 
           <div className="toggle-circuit">
             {/* Source side */}
-            <div className="circuit-side">
+            <div className="circuit-side _has-power">
+              <div className="_wire" />
               <span className="circuit-node source-node">⚡ Source</span>
-            </div>
-
-            {/* The switch mechanism */}
-            <div className="switch-mechanism">
-              {/* Wires */}
-              <div className="wire wire-top" />
-              <div className="wire wire-bottom" />
-
-              {/* Pivot dot */}
-              <div className="switch-pivot" />
-
-              {/* The toggle lever */}
-              <motion.div
-                className="toggle-lever"
-                variants={toggleVariants}
-                animate={["on", "off", "on"]}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  times: [0, 0.5, 1],
-                }}
-                style={{ originX: "50%", originY: "100%" }}
-              />
-
-              {/* Contact points */}
-              <div className="contact contact-top" />
-              <div className="contact contact-bottom" />
-
-              {/* Current flow dots when closed */}
-              <motion.div
-                className="current-flow flow-top"
-                animate={{
-                  opacity: [1, 1, 0, 0, 1],
-                  scale: [1, 1.3, 0, 0, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  times: [0, 0.4, 0.5, 0.9, 1],
-                }}
-              >
-                ⚡
-              </motion.div>
             </div>
 
             {/* Drain side */}
             <div className="circuit-side">
               <span className="circuit-node drain-node">⬇️ Drain</span>
             </div>
+
           </div>
+
+          {/* Voltage gate indicator */}
+          <motion.div
+            className="gate-indicator"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+          >
+            <motion.div
+              className="gate-pulse"
+              animate={{
+                boxShadow: [
+                  "0 0 0 0 rgba(74, 222, 128, 0.6)",
+                  "0 0 0 0 rgba(248, 113, 113, 0.6)",
+                  "0 0 0 0 rgba(74, 222, 128, 0.6)",
+                ],
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", times: [0, 0.5, 1] }}
+            >
+              <motion.span
+                className="gate-text"
+                animate={{ color: ["#4ade80", "#f87171", "#4ade80"] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", times: [0, 0.5, 1] }}
+              >
+                GATE
+              </motion.span>
+            </motion.div>
+          </motion.div>
 
           {/* State indicator */}
           <div className="state-indicators">
@@ -120,33 +105,6 @@ export default function Transistors() {
           </div>
         </motion.div>
 
-        {/* Voltage gate indicator */}
-        <motion.div
-          className="gate-indicator"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-        >
-          <motion.div
-            className="gate-pulse"
-            animate={{
-              boxShadow: [
-                "0 0 0 0 rgba(74, 222, 128, 0.6)",
-                "0 0 0 0 rgba(248, 113, 113, 0.6)",
-                "0 0 0 0 rgba(74, 222, 128, 0.6)",
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", times: [0, 0.5, 1] }}
-          >
-            <motion.span
-              className="gate-text"
-              animate={{ color: ["#4ade80", "#f87171", "#4ade80"] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", times: [0, 0.5, 1] }}
-            >
-              GATE
-            </motion.span>
-          </motion.div>
-        </motion.div>
 
         {/* Key facts */}
         <motion.div

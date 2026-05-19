@@ -126,6 +126,139 @@ export default function OscillatorSlide() {
         >
           <h3 className="section-label">Each Clock Tick Advances the Program</h3>
 
+          {/* 🔥 NEW: Clock → Transistors connection */}
+          <motion.div
+            className="clock-to-transistors"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.4 }}
+          >
+            <div className="ctt-header">
+              <span className="ctt-title">🔌 How the Clock Talks to Transistors</span>
+              <p className="ctt-subtitle">
+                The clock signal is just a voltage — and voltage is what controls every transistor gate
+              </p>
+            </div>
+
+            <div className="ctt-diagram">
+              {/* Clock wave (simplified) feeding into transistors */}
+              <div className="ctt-wave-column">
+                <span className="ctt-wave-label">Clock Signal</span>
+                <svg viewBox="0 0 200 60" className="ctt-wave-svg">
+                  <path
+                    d="M0,45 L25,45 L25,15 L50,15 L50,45 L75,45 L75,15 L100,15 L100,45 L125,45 L125,15 L150,15 L150,45 L175,45 L175,15 L200,15"
+                    fill="none" stroke="#60a5fa" strokeWidth="2.5"
+                  />
+                  {/* Animated pulse */}
+                  {[25, 75, 125, 175].map((x, i) => (
+                    <motion.circle
+                      key={x}
+                      cx={x} cy={15} r={5}
+                      fill="#4ade80"
+                      animate={{ opacity: [0, 1, 1, 0], scale: [0, 1.2, 1, 0] }}
+                      transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.3, ease: "easeInOut" }}
+                    />
+                  ))}
+                </svg>
+                <div className="ctt-wave-labels">
+                  <span className="ctt-high-label">HIGH (1.2V)</span>
+                  <span className="ctt-low-label">LOW (0V)</span>
+                </div>
+              </div>
+
+              {/* Arrow connecting clock to transistors */}
+              <div className="ctt-connection">
+                <motion.span
+                  className="ctt-conn-arrow"
+                  animate={{ y: [0, 3, 0] }}
+                  transition={{ duration: 0.6, repeat: Infinity }}
+                >
+                  ⬇️
+                </motion.span>
+                <span className="ctt-conn-label">Voltage applied to every transistor's <strong>gate</strong> terminal</span>
+              </div>
+
+              {/* Transistor bank toggling with the clock */}
+              <div className="ctt-transistor-bank">
+                <span className="ctt-bank-label">Transistors inside the CPU</span>
+                <div className="ctt-transistor-row">
+                  {[
+                    { label: "Latch #1", on: [true, false, true, false] },
+                    { label: "Latch #2", on: [true, false, true, false] },
+                    { label: "Latch #3", on: [true, false, true, false] },
+                    { label: "Latch #4", on: [true, false, true, false] },
+                  ].map((t, i) => (
+                    <motion.div
+                      key={t.label}
+                      className="ctt-transistor"
+                      animate={{
+                        backgroundColor: [
+                          "rgba(74, 222, 128, 0.25)",
+                          "rgba(248, 113, 113, 0.15)",
+                          "rgba(74, 222, 128, 0.25)",
+                          "rgba(248, 113, 113, 0.15)",
+                        ],
+                        borderColor: [
+                          "rgba(74, 222, 128, 0.6)",
+                          "rgba(248, 113, 113, 0.3)",
+                          "rgba(74, 222, 128, 0.6)",
+                          "rgba(248, 113, 113, 0.3)",
+                        ],
+                        boxShadow: [
+                          "0 0 8px rgba(74, 222, 128, 0.3)",
+                          "0 0 0px rgba(248, 113, 113, 0)",
+                          "0 0 8px rgba(74, 222, 128, 0.3)",
+                          "0 0 0px rgba(248, 113, 113, 0)",
+                        ],
+                      }}
+                      transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <span className="ctt-t-label">{t.label}</span>
+                      <motion.span
+                        className="ctt-t-state"
+                        animate={{ content: ["\"ON\"", "\"OFF\"", "\"ON\"", "\"OFF\""] }}
+                        transition={{ duration: 1.2, repeat: Infinity }}
+                      >
+                        🔛
+                      </motion.span>
+                      <span className="ctt-t-voltage">Gate</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Explanation cards */}
+            <div className="ctt-explanation">
+              <div className="ctt-expl-card">
+                <div className="ctt-expl-icon">⬆️</div>
+                <div className="ctt-expl-text">
+                  <strong>Clock goes HIGH</strong>
+                  <p>Voltage rises → transistor gates open → new data flows into latches</p>
+                </div>
+              </div>
+              <div className="ctt-expl-card">
+                <div className="ctt-expl-icon">⬇️</div>
+                <div className="ctt-expl-text">
+                  <strong>Clock goes LOW</strong>
+                  <p>Voltage drops → transistor gates close → latches hold the data in place</p>
+                </div>
+              </div>
+              <div className="ctt-expl-card">
+                <div className="ctt-expl-icon">⚡</div>
+                <div className="ctt-expl-text">
+                  <strong>Billions of toggles</strong>
+                  <p>Every tick, ~billions of transistors inside the CPU switch ON/OFF in perfect sync</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="ctt-summary">
+              🔁 <strong>The clock is just a voltage wave.</strong> That voltage hits transistor gates. Gates open and close.
+              Data flows and stops. That rhythmic toggling — ON, OFF, ON, OFF — <strong>is what makes the computer compute.</strong>
+            </div>
+          </motion.div>
+
           <div className="osc-cycle-steps">
             {clockCycles.map((step, i) => (
               <motion.div
