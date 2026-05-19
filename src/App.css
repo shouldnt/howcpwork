@@ -58,7 +58,7 @@ body {
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow: visible;
   transition: width 0.25s ease;
   position: relative;
 }
@@ -129,6 +129,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  overflow-y: auto;
+  overflow-x: visible;
 }
 
 .sidebar-item {
