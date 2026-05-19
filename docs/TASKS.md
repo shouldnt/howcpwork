@@ -14,6 +14,7 @@
 | CPU slide | ✅ Done | Fetch-Decode-Execute cycle + ALU |
 | Registers slide | ✅ Done | PC, IR, GP regs, SP, Flags with chip diagram |
 | MMIO slide | ✅ Done | Memory-mapped I/O concept + table |
+| Oscillator slide | ✅ Done | Crystal oscillator, square wave, PC advancement, clock cycles |
 | Hardware Communication slide | ✅ Done | Buses, interrupts, protocols |
 | Memory slide | ✅ Done | Hierarchy pyramid |
 | OS slide | ✅ Done | Layers + responsibilities |

@@ -30,11 +30,12 @@ The deck traces the full journey from the physical layer up to software:
 2. **Transistors** — the toggle switches that make it all possible
 3. **Logic Gates** — AND, OR, NOT — building circuits from switches
 4. **CPU** — Fetch-Decode-Execute cycle & the ALU
-5. **Registers** — ultra-fast on-chip memory (PC, IR, GP, SP, Flags)
-6. **MMIO** — how the CPU talks to hardware peripherals
-7. **Hardware Communication** — buses, interrupts, protocols (I²C, SPI, PCIe, USB)
-8. **Memory Hierarchy** — registers → cache → RAM → storage
-9. **Operating System** — process/memory/file management layers
+5. **Oscillator (Clock)** — the heartbeat that drives every instruction forward
+6. **Registers** — ultra-fast on-chip memory (PC, IR, GP, SP, Flags)
+7. **MMIO** — how the CPU talks to hardware peripherals
+8. **Hardware Communication** — buses, interrupts, protocols (I²C, SPI, PCIe, USB)
+9. **Memory Hierarchy** — registers → cache → RAM → storage
+10. **Operating System** — process/memory/file management layers
 
 ## Project Structure
 
@@ -50,6 +51,7 @@ src/
     ├── Transistors.jsx
     ├── LogicGates.jsx
     ├── CPUSlide.jsx
+    ├── OscillatorSlide.jsx
     ├── RegistersSlide.jsx
     ├── MMIOSlide.jsx
     ├── HardwareCommSlide.jsx

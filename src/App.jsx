@@ -7,6 +7,7 @@ import BinarySlide from "./slides/BinarySlide";
 import Transistors from "./slides/Transistors";
 import LogicGates from "./slides/LogicGates";
 import CPUSlide from "./slides/CPUSlide";
+import OscillatorSlide from "./slides/OscillatorSlide";
 import RegistersSlide from "./slides/RegistersSlide";
 import MMIOSlide from "./slides/MMIOSlide";
 import HardwareCommSlide from "./slides/HardwareCommSlide";
@@ -23,6 +24,7 @@ const slides = [
   { id: "transistors", component: Transistors },
   { id: "logic-gates", component: LogicGates },
   { id: "cpu", component: CPUSlide },
+  { id: "oscillator", component: OscillatorSlide },
   { id: "registers", component: RegistersSlide },
   { id: "mmio", component: MMIOSlide },
   { id: "hardware-comm", component: HardwareCommSlide },
