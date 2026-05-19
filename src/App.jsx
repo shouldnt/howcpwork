@@ -18,19 +18,19 @@ import SummarySlide from "./slides/SummarySlide";
 import "./App.css";
 
 const slides = [
-  { id: "title", component: TitleSlide },
-  { id: "big-picture", component: BigPicture },
-  { id: "binary", component: BinarySlide },
-  { id: "transistors", component: Transistors },
-  { id: "logic-gates", component: LogicGates },
-  { id: "cpu", component: CPUSlide },
-  { id: "oscillator", component: OscillatorSlide },
-  { id: "registers", component: RegistersSlide },
-  { id: "mmio", component: MMIOSlide },
-  { id: "hardware-comm", component: HardwareCommSlide },
-  { id: "memory", component: MemorySlide },
-  { id: "os", component: OSSlide },
-  { id: "summary", component: SummarySlide },
+  { id: "title", title: "Intro", component: TitleSlide },
+  { id: "big-picture", title: "Big Picture", component: BigPicture },
+  { id: "binary", title: "Binary", component: BinarySlide },
+  { id: "transistors", title: "Transistors", component: Transistors },
+  { id: "logic-gates", title: "Logic Gates", component: LogicGates },
+  { id: "cpu", title: "CPU", component: CPUSlide },
+  { id: "oscillator", title: "Oscillator", component: OscillatorSlide },
+  { id: "registers", title: "Registers", component: RegistersSlide },
+  { id: "mmio", title: "MMIO", component: MMIOSlide },
+  { id: "hardware-comm", title: "Hardware Comm", component: HardwareCommSlide },
+  { id: "memory", title: "Memory", component: MemorySlide },
+  { id: "os", title: "OS", component: OSSlide },
+  { id: "summary", title: "Summary", component: SummarySlide },
 ];
 
 function App() {
@@ -80,54 +80,51 @@ function App() {
 
   return (
     <div className="deck">
-      {/* Progress bar */}
-      <div className="progress-bar">
-        <div
-          className="progress-fill"
-          style={{ width: `${((current + 1) / slides.length) * 100}%` }}
-        />
-      </div>
-
-      {/* Slide number */}
-      <div className="slide-number">
-        {current + 1} / {slides.length}
-      </div>
-
-      {/* Slide content */}
-      <div className="slide-area">
-        <AnimatePresence mode="wait">
-          <SlideComponent key={current} />
-        </AnimatePresence>
-      </div>
-
-      {/* Navigation buttons */}
-      <div className="nav-buttons">
-        <button
-          className="nav-btn"
-          onClick={goPrev}
-          disabled={current === 0}
-          title="Previous (←)"
-        >
-          ← Prev
-        </button>
-        <div className="nav-dots">
-          {slides.map((_, i) => (
+      {/* Sidebar */}
+      <nav className="sidebar">
+        <div className="sidebar-header">
+          <span className="sidebar-icon">💻</span>
+          <span className="sidebar-brand">How Computers Work</span>
+        </div>
+        <div className="sidebar-slides">
+          {slides.map((slide, i) => (
             <button
-              key={i}
-              className={`nav-dot ${i === current ? "active" : ""}`}
+              key={slide.id}
+              className={`sidebar-item ${i === current ? "active" : ""}`}
               onClick={() => goTo(i)}
-              title={`Go to slide ${i + 1}`}
-            />
+              title={slide.title}
+            >
+              <span className="sidebar-num">{i + 1}</span>
+              <span className="sidebar-title">{slide.title}</span>
+            </button>
           ))}
         </div>
-        <button
-          className="nav-btn"
-          onClick={goNext}
-          disabled={current === slides.length - 1}
-          title="Next (→)"
-        >
-          Next →
-        </button>
+        <div className="sidebar-footer">
+          <span className="sidebar-shortcut">← → arrows</span>
+        </div>
+      </nav>
+
+      {/* Main area */}
+      <div className="main-area">
+        {/* Progress bar */}
+        <div className="progress-bar">
+          <div
+            className="progress-fill"
+            style={{ width: `${((current + 1) / slides.length) * 100}%` }}
+          />
+        </div>
+
+        {/* Slide number */}
+        <div className="slide-number">
+          {current + 1} / {slides.length}
+        </div>
+
+        {/* Slide content */}
+        <div className="slide-area">
+          <AnimatePresence mode="wait">
+            <SlideComponent key={current} />
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );
