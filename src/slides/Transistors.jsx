@@ -38,10 +38,9 @@ export default function Transistors() {
           <div className="toggle-circuit">
             {/* Source side */}
             <div className="circuit-side _has-power">
-              <div className="_wire" />
               <span className="circuit-node source-node">⚡ Source</span>
             </div>
-
+            <img class="transistor" src="/transistor.png" />
             {/* Drain side */}
             <div className="circuit-side">
               <span className="circuit-node drain-node">⬇️ Drain</span>

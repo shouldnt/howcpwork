@@ -2,6 +2,16 @@ import { motion } from "framer-motion";
 
 const gates = [
   {
+    name: "NAND",
+    out: "0 only if both are 1",
+    table: [
+      [0, 0, 1],
+      [0, 1, 1],
+      [1, 0, 1],
+      [1, 1, 0],
+    ],
+  },
+  {
     name: "AND",
     out: "1 only if both are 1",
     table: [
@@ -27,6 +37,26 @@ const gates = [
     table: [
       [0, 1],
       [1, 0],
+    ],
+  },
+  {
+    name: "NOR",
+    out: "1 only if both are 0",
+    table: [
+      [0, 0, 1],
+      [0, 1, 0],
+      [1, 0, 0],
+      [1, 1, 0],
+    ],
+  },
+  {
+    name: "XOR",
+    out: "1 if inputs differ",
+    table: [
+      [0, 0, 0],
+      [0, 1, 1],
+      [1, 0, 1],
+      [1, 1, 0],
     ],
   },
 ];
@@ -100,8 +130,7 @@ export default function LogicGates() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.5 }}
       >
-        🧠 These 3 gates (plus NAND, NOR, XOR) are enough to build a complete
-        computer
+        🧠 These 6 gates are enough to build a complete computer
       </motion.p>
     </motion.div>
   );

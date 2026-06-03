@@ -4,8 +4,11 @@ import { AnimatePresence } from "framer-motion";
 import TitleSlide from "./slides/TitleSlide";
 import BigPicture from "./slides/BigPicture";
 import BinarySlide from "./slides/BinarySlide";
+import BinaryDecoderSlide from "./slides/BinaryDecoderSlide";
 import Transistors from "./slides/Transistors";
 import LogicGates from "./slides/LogicGates";
+import ALUSlide from "./slides/ALUSlide";
+import MultiplexerSlide from "./slides/MultiplexerSlide";
 import CPUSlide from "./slides/CPUSlide";
 import OscillatorSlide from "./slides/OscillatorSlide";
 import RegistersSlide from "./slides/RegistersSlide";
@@ -24,8 +27,11 @@ const slides = [
   { id: "transistors", title: "Transistors", component: Transistors },
   { id: "logic-gates", title: "Logic Gates", component: LogicGates },
   { id: "cpu", title: "CPU", component: CPUSlide },
-  { id: "oscillator", title: "Oscillator", component: OscillatorSlide },
   { id: "registers", title: "Registers", component: RegistersSlide },
+  { id: "alu", title: "ALU", component: ALUSlide },
+  { id: "binary-decoder", title: "Decoder", component: BinaryDecoderSlide },
+  { id: "multiplexer", title: "MUX", component: MultiplexerSlide },
+  { id: "oscillator", title: "Oscillator", component: OscillatorSlide },
   { id: "mmio", title: "MMIO", component: MMIOSlide },
   { id: "hardware-comm", title: "Hardware Comm", component: HardwareCommSlide },
   { id: "memory", title: "Memory", component: MemorySlide },
