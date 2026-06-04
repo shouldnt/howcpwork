@@ -40,7 +40,7 @@ export default function Transistors() {
             <div className="circuit-side _has-power">
               <span className="circuit-node source-node">⚡ Source</span>
             </div>
-            <img class="transistor" src="/transistor.png" />
+            <img class="transistor" src={`${import.meta.env.BASE_URL}transistor.png`} />
             {/* Drain side */}
             <div className="circuit-side">
               <span className="circuit-node drain-node">⬇️ Drain</span>
