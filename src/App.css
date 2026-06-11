@@ -61,6 +61,7 @@ body {
   overflow: visible;
   transition: width 0.25s ease;
   position: relative;
+  z-index: 1000
 }
 
 .sidebar.collapsed {
